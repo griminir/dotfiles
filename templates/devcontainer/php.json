@@ -1,0 +1,13 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "ValeryanM.vscode-phpsab",
+        "johnbillion.vscode-wordpress-hooks",
+        "wordpresstoolbox.wordpress-toolbox",
+        "xdebug.php-debug"
+      ]
+    }
+  }
+}
