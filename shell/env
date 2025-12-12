@@ -1,12 +1,13 @@
 # ~/.config/shell/env
 
-# User bins
-if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
-fi
+path_prepend() {
+  case ":$PATH:" in
+    *":$1:"*) ;; # already there
+    *) PATH="$1:$PATH" ;;
+  esac
+}
 
-if [ -d "$HOME/.local/bin" ] ; then
-  PATH="$HOME/.local/bin:$PATH"
-fi
+[ -d "$HOME/bin" ] && path_prepend "$HOME/bin"
+[ -d "$HOME/.local/bin" ] && path_prepend "$HOME/.local/bin"
 
 export PATH
