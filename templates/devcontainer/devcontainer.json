@@ -1,0 +1,35 @@
+{
+  "name": "dev (template)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "remoteUser": "vscode",
+
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "username": "vscode",
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nvmInstallPath": "/home/vscode/.nvm"
+    }
+  },
+
+  "postCreateCommand": "bash -lc '\nset -e\nDOTFILES_REPO=https://github.com/griminir/dotfiles.git\nDOTFILES_DIR=$HOME/.dotfiles\n\nif [ ! -d \"$DOTFILES_DIR\" ]; then\n  git clone --depth 1 \"$DOTFILES_REPO\" \"$DOTFILES_DIR\"\nfi\n\nbash \"$DOTFILES_DIR/install.sh\"\n'",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh"
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
+}
